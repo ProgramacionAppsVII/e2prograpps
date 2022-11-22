@@ -57,7 +57,7 @@ import { firebaseConfig } from "../database/firebase";
         if (state.name === "") {
           alert("please provide a name");
         } else {
-    
+
           try {
             await firebase.db.collection("users").add({
               name: state.name,
@@ -101,7 +101,7 @@ import { firebaseConfig } from "../database/firebase";
               <Input style={styles.inputStyle} placeholder="Nombre" onChangeText={(value) => handleChangeText(value, "name")} value={state.name}/>
         </View>
         <View style={styles.formularioContainer}>
-              <Text style={styles.fuenteRegularFormulario}>Nombre</Text>
+              <Text style={styles.fuenteRegularFormulario}>Apellidos</Text>
               <Input style={styles.inputStyle} placeholder="Apellidos" onChangeText={(value) => handleChangeText(value, "apellidos")} value={state.apellidos}/>
         </View>
           <View style={styles.formularioContainer}>
@@ -110,11 +110,7 @@ import { firebaseConfig } from "../database/firebase";
           </View>
           <View style={styles.formularioContainer}>
               <Text style={styles.fuenteRegularFormulario}>Contraseña</Text>
-              <Input secureTextEntry={true} style={styles.inputStyle} onChangeText= {(text) => setPassword(text)} placeholder="password"/>
-          </View>
-          <View style={styles.formularioContainer}>
-              <Text style={styles.fuenteRegularFormulario}>Confirmar Contraseña</Text>
-              <Input secureTextEntry={true} style={styles.inputStyle}></Input>
+              <Input secureTextEntry={true} style={styles.inputStyle} onChangeText= {(text) => setPassword(text)} placeholder="Contraseña"/>
           </View>
         <View style={styles.viewButton}>
           <TouchableOpacity style={styles.buttonStyle} onPress= {() => {saveNewUser(), handleCreateAccount()}}>
@@ -188,6 +184,8 @@ const styles = StyleSheet.create({
     width: 300,
     height: 47,
     borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   letraButton: {
     fontFamily: 'OpenSans-Bold',

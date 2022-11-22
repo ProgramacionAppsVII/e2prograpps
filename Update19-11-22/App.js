@@ -7,6 +7,7 @@ import UserDetailScreen from './screens/UserDetailScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import buscador from './screens/buscador';
 
 
 const Stack = createStackNavigator();
@@ -18,6 +19,7 @@ function App() {
       <Stack.Screen name="SignIn" component={signIn}/>
       <Stack.Screen name="home" component={home}/>
       <Stack.Screen name="UserDetailScreen" component={UserDetailScreen}/>
+      <Stack.Screen name="buscador" component={buscador}/>
     </Stack.Navigator>
   );
 }

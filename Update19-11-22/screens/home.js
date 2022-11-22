@@ -77,7 +77,6 @@ const UserScreen = (props) => {
           </ListItem>
         );
       })}
-      
     </ScrollView>
   );
 }

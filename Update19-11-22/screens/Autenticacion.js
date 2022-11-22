@@ -37,25 +37,13 @@ function SignIn(){
     if (!fontsLoaded){
         return (<View/>);
     }
-    const handleCreateAccount = () => {
-      createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log('Cuenta Creada!')
-        const user = userCredential.user;
-        console.log (user)
-      })
-      .catch(error => {
-        console.log(error)
-        Alert.alert(error.message)
-      })
-    }
     const handleSignIn = (props) => {
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log('Inicio de sesion!')
         const user = userCredential.user;
         console.log (user);
-        navigation.navigate("home");
+        navigation.navigate("buscador");
        //No accede a la pagina deseada
       })
       .catch(error => {
@@ -67,33 +55,35 @@ function SignIn(){
           <TouchableOpacity  onPress={() => navigation.navigate("Autenticacion")}>
             <Image style={styles.imageBack} source={require('../assets/images/back.png')}></Image>
           </TouchableOpacity>
-        <View style={styles.center}>
-        <Image style={styles.imageLogo} source={require('../assets/images/UndrawBienveniddo.png')}/>
-        <View>
-            <Text style={styles.fuenteBold}>Bienvenido</Text>
-        </View>
-        <View>
-            <Text style={styles.fuenteRegularBienvenida} >Registrate y se parte del equipo!</Text>
-        </View>
-          <View style={styles.formularioContainer}>
-              <Text style={styles.fuenteRegularFormulario}>Correo</Text>
-              <Input style={styles.inputStyle} onChangeText= {(text) => setEmail(text)} placeholder="Correo"/>
-          </View>
-          <View style={styles.formularioContainer}>
-              <Text style={styles.fuenteRegularFormulario}>Contraseña</Text>
-              <Input secureTextEntry={true} style={styles.inputStyle} onChangeText= {(text) => setPassword(text)} placeholder="password"/>
-          </View>
-          <View style={styles.viewButton}>
-          <TouchableOpacity style={styles.buttonStyle} onPress={handleSignIn}>
-              <Text style={styles.letraButton}>Iniciar Sesión</Text>
-          </TouchableOpacity>
-          </View>
-              <Text style={styles.fuenteRegular}>¿No tienes una cuenta?</Text>
-                <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
-              <Text style={styles.fuenteBoldRegistrate}>Registrate</Text>
+          <View style={styles.center}>
+              <Image style={styles.imageLogo} source={require('../assets/images/UndrawBienveniddo.png')}/>
+              <View>
+                  <Text style={styles.fuenteBold}>Bienvenido</Text>
+              </View>
+              <View>
+                  <Text style={styles.fuenteRegularBienvenida} >Registrate y se parte del equipo!</Text>
+              </View>
+                <View style={styles.formularioContainer}>
+                    <Text style={styles.fuenteRegularFormulario}>Correo</Text>
+                    <Input style={styles.inputStyle} onChangeText= {(text) => setEmail(text)} placeholder="Correo"/>
+                </View>
+                <View style={styles.formularioContainer}>
+                    <Text style={styles.fuenteRegularFormulario}>Contraseña</Text>
+                    <Input secureTextEntry={true} style={styles.inputStyle} onChangeText= {(text) => setPassword(text)} placeholder="Contraseña"/>
+                </View>
+                <View style={styles.viewButton}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={handleSignIn}>
+                    <Text style={styles.letraButton}>Iniciar Sesión</Text>
                 </TouchableOpacity>
+                </View>
+                <View style={styles.direction}>
+                    <Text style={styles.fuenteRegular}>¿No tienes una cuenta?</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+                      <Text style={styles.fuenteBoldRegistrate}>Registrate</Text>
+                    </TouchableOpacity>
+                    </View>
             </View>
-          </View>
+      </View>
   
   );
 }
@@ -157,6 +147,8 @@ const styles = StyleSheet.create({
     width: 300,
     height: 47,
     borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   letraButton: {
     fontFamily: 'OpenSans-Bold',
@@ -169,6 +161,18 @@ const styles = StyleSheet.create({
   },
   imageBack: {
     marginTop: 10,
-  }
+  },
+  fuenteBoldRegistrate:{
+    fontFamily: 'OpenSans-Bold',
+    fontSize: 14,
+    textAlign: 'center',
+    color: "#000000",
+  },
+  fuenteRegular:{
+    fontFamily: 'OpenSans-Regular',
+    fontSize: 14,
+    textAlign: 'center',
+    color: "#000000",
+  },
 })
 
