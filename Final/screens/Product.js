@@ -42,11 +42,14 @@ export default function Product({
 
     const onEdit = () => {
         const docRef = doc(database, 'products', id);
-        
+        if (compra===undefined) {
+            alert ("Agregue la cantidad que desea comprar");}
+            else{ 
         valor = parseInt(compra)
         valor = stock-valor
         cantidad = parseInt(valor)
-
+        if(cantidad===undefined || compra===0){ 
+            alert ("Añade otro numero");}
         if (cantidad>0){
             updateDoc(docRef, { stock: cantidad, })
         }
@@ -59,6 +62,7 @@ export default function Product({
 
         }
     }
+}
 
     return(
         <RN.View>

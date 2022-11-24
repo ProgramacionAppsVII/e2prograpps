@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, StatusBar, TextInput} from 'react-native';
+import { StyleSheet, Text, View, Image, StatusBar, TextInput, Alert} from 'react-native';
 import * as Font from 'expo-font';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
 import {initializeApp} from 'firebase/app';
@@ -37,6 +37,19 @@ function SignIn(){
     if (!fontsLoaded){
         return (<View/>);
     }
+    const openConfirmationAlert = () => {
+      Alert.alert(
+        "Al parecer no tiene cuenta",
+        "Desea crear una?",
+        [
+          { text: "Yes", onPress: () => navigation.navigate("SignIn") },
+          { text: "No", onPress: () => console.log("canceled") },
+        ],
+        {
+          cancelable: true,
+        }
+      );
+    };
     const handleCreateAccount = () => {
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -50,6 +63,9 @@ function SignIn(){
       })
     }
     const handleSignIn = (props) => {
+      if (auth ==="" || email === "" || password==="") {
+        alert("Ingresa los datos");}
+        else{
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log('Inicio de sesion!')
@@ -59,9 +75,10 @@ function SignIn(){
        
       })
       .catch(error => {
-        console.log(error)
+        openConfirmationAlert()
       })
     }
+  }
   return(
     <View style={styles.container}>
           {/* <TouchableOpacity  onPress={() => navigation.navigate("Autenticacion")}>

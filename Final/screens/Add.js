@@ -7,7 +7,7 @@ import EmojiPicker from 'rn-emoji-keyboard';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { NativeBaseProvider } from 'native-base';
-import { StyleSheet, Text, View, Image, StatusBar, TextInput} from 'react-native';
+import { StyleSheet, Text, View, Image, StatusBar, TextInput, Alert} from 'react-native';
 import Constants from 'expo-constants';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -28,8 +28,9 @@ export default function Add() {
 
     const handlePick = (emojiObject) => {
         setNewItem({
-            ...newItem,
+            ...newItem, 
             emoji: emojiObject.emoji,
+ 
         });
       /* example emojiObject = { 
           "emoji": "❤️",
@@ -40,9 +41,13 @@ export default function Add() {
     }
 
     const onSend = async () => {
+        if (newItem.idproducto===''|| newItem.name===''|| newItem.price===''|| newItem.stock===''|| newItem.idproveedor===''|| newItem.categoria==='') {
+           alert ("Datos incompletos");}
+            else{ 
         const docRef = await addDoc(collection(database, 'products'), newItem);
         navigation.goBack();
       }
+    }
 
     return(
         <RN.View style={styles.container}>
@@ -212,5 +217,4 @@ const styles = RN.StyleSheet.create({
         opacity: 0.5,
         marginHorizontal: 13,
     },
-
 });

@@ -36,6 +36,9 @@ import { firebaseConfig } from "../database/firebase";
         return (<View/>);
     }
     const handleCreateAccount = () => {
+      if (state.name === "" || state.apellidos==="" || auth ==="" || email === "" || password==="") {
+        alert("Datos incompletos");}
+        else{ 
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log('Cuenta Creada!')
@@ -49,13 +52,14 @@ import { firebaseConfig } from "../database/firebase";
         Alert.alert(error.message)
       })
     }
+  }
 
       const handleChangeText = (value, name) => {
         setState({ ...state, [name]: value });
       };
     
       const saveNewUser = async () => {
-        if (state.name === "" && state.apellidos==="") {
+        if (state.name === "" || state.apellidos==="") {
           alert("please provide a name");
         } else {
     

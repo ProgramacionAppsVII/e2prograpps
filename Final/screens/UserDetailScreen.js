@@ -52,7 +52,7 @@ const UserDetailScreen = (props) => {
       .doc(props.route.params.userId);
     await dbRef.delete();
     setLoading(false)
-    props.navigation.navigate("home");
+    props.navigation.navigate("home2");
   };
 
   const openConfirmationAlert = () => {
