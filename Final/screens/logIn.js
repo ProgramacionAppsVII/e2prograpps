@@ -71,10 +71,10 @@ function SignIn(){
         <View style={styles.center}>
         <Image style={styles.imageLogo} source={require('../assets/images/LogoBlanco.png')}/>
         <View>
-            <Text style={styles.fuenteBold}>Bienvenido</Text>
+            <Text style={styles.fuenteBold}>¡Hola!</Text>
         </View>
         <View>
-            <Text style={styles.fuenteRegularBienvenida} >Registrate y se parte del equipo!</Text>
+            <Text style={styles.fuenteRegularBienvenida} >¡Estamos felices de volver a verte!, por favor inicia sesión.</Text>
         </View>
           <View style={styles.formularioContainer}>
               <Text style={styles.fuenteRegularFormulario}>Correo</Text>
